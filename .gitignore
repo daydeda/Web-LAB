@@ -1,0 +1,4 @@
+# Ignore / hide th files and folders
+node_modules/
+.env
+.env.local
