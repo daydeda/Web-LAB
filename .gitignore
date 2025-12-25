@@ -1,5 +1,5 @@
 # Ignore / hide th files and folders
-node_modules/
+node_modules
 .env
 .env.local
 .DS_Store
