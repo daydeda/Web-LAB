@@ -1,0 +1,67 @@
+
+nav a.active {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+div {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 80vh;
+}
+
+/* Reset & base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #111;
+  background: #fff;
+  padding: 24px 32px;
+}
+
+/* Top navigation (header.ejs uses <nav>) */
+nav {
+  margin: 12px 0;
+}
+nav a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-size: 18px;
+  margin-right: 8px;
+}
+nav a + span { margin: 0 8px; color: #666; } /* in case pipes are spans */
+nav a.active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Main hero/card (your views wrap the title in a plain <div>) */
+div {
+  max-width: 1200px;
+  margin: 12px auto 40px;
+  background: #e9eef1; /* light gray */
+  border-radius: 8px;
+  padding: 48px 56px;
+  display: flex;
+  align-items: center; /* vertical centering */
+  min-height: 220px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04) inset;
+}
+
+/* Title style */
+h1 {
+  margin: 0;
+  font-size: 64px;
+  color: #111;
+  line-height: 1;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: #7a7a7a;
+  padding: 20px 0 40px;
+  font-size: 14px;
+}
