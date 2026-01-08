@@ -4,8 +4,10 @@
 <ul>
     <% students.forEach(s => { %>
         <li>
-            <a href="/students/<%= s.id %>"><%= s.name %></a>
-            — <%= s.major %>
+            <div>
+                <a class="student-link" href="/students/<%= s.id %>"><%= s.name %></a>
+            </div>
+            <div class="meta"><%= s.major %></div>
         </li>
     <% }) %>
 </ul>

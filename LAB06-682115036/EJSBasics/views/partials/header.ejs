@@ -1,6 +1,16 @@
 <link rel="stylesheet" href="/style.css">
-<nav>
-    <a href="/" class="<%= activePage === 'home' ? 'active' : '' %>">Home</a> |
-    <a href="/syntax" class="<%= activePage === 'syntax' ? 'active' : '' %>">Syntax</a> |
-    <a href="/students" class="<%= activePage === 'student' ? 'active' : '' %>">Student</a>
-</nav>
+<header>
+    <div class="container header-bar">
+        <div class="brand">
+            <a href="/" class="brand-link"><strong>EJS</strong> Basics</a>
+        </div>
+        <nav>
+            <a href="/" class="<%= activePage === 'home' ? 'active' : '' %>">Home</a>
+            <a href="/syntax" class="<%= activePage === 'syntax' ? 'active' : '' %>">Syntax</a>
+            <a href="/students" class="<%= activePage === 'student' ? 'active' : '' %>">Students</a>
+        </nav>
+    </div>
+    <div class="container">
+        
+  
+</header>
