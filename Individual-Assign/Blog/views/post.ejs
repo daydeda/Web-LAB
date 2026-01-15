@@ -1,0 +1,14 @@
+<div class="header"><%- include("partials/header") %></div>
+<article class="max-w-3xl mx-auto">
+  <h1 class="text-3xl font-bold mb-4"><%= title %></h1>
+  <div class="prose mb-6 text-gray-800 whitespace-normal break-words break-all"><p><%= postContent %></p></div>
+
+  <div class="flex items-center gap-4" data-post-container>
+    <div class="text-sm text-gray-600">Likes: <span class="font-medium likes-count" data-post-id="<%= id %>"><%= typeof likes !== 'undefined' ? likes : 0 %></span></div>
+    <div>
+      <button type="button" class="like-btn bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600" data-post-id="<%= id %>">Like</button>
+    </div>
+  </div>
+</article>
+<script src="/like.js" defer></script>
+<%- include("partials/footer") %>

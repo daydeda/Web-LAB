@@ -1,0 +1,19 @@
+<div class="header"><%- include("partials/header") %></div>
+
+<h1 class="text-3xl font-semibold mb-6">Compose</h1>
+<form action="/compose" method="POST" class="max-w-2xl">
+    <div id="titleDiv" class="mb-4">
+        <label class="block text-sm font-medium mb-1">Title</label>
+        <input type="text" id="postTitle" name="postTitle" placeholder="Title" 
+            autocomplete="off" required
+               class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  <div id="messageDiv" class="mb-4">
+    <label class="block text-sm font-medium mb-1">Message</label>
+    <textarea id="postBody" name="postBody" placeholder="Message" required
+              class="w-full border rounded px-3 py-2 h-40 resize-vertical focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+  </div>
+  <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Publish</button>
+</form>
+
+<%- include("partials/footer") %>

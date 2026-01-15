@@ -1,0 +1,64 @@
+<div class="header"><%- include("partials/header") %></div>
+
+<section class="bg-gradient-to-r from-[#6dd5ed] to-[#2193b0] text-white p-12 rounded-lg my-5 text-center shadow-lg">
+    <h1 class="m-0 text-3xl font-semibold">About Us</h1>
+    <p class="text-sm opacity-95 mt-2">We build thoughtful web experiences. Learn who we are and what drives us.</p>
+</section>
+
+<main class="grid gap-6 items-start mb-6 md:[grid-template-columns:1fr_320px]">
+    <div>
+        <div class="bg-white rounded-lg p-6 shadow-md">
+            <h2 class="text-xl font-semibold">Our Mission</h2>
+            <p class="mt-2 text-base"><%= aboutContent %></p>
+
+            <h3 class="mt-4 font-semibold">What we value</h3>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+                <li>Clarity & simplicity</li>
+                <li>Performance & accessibility</li>
+                <li>Continuous learning</li>
+            </ul>
+
+            <div class="flex gap-3 justify-between mt-4" aria-hidden="true">
+                <div class="flex-1 text-center p-3 rounded-md bg-gradient-to-b from-gray-100 to-white">
+                    <strong class="block">120+</strong>
+                    <div class="text-gray-600 text-sm">Projects</div>
+                </div>
+                <div class="flex-1 text-center p-3 rounded-md bg-gradient-to-b from-gray-100 to-white">
+                    <strong class="block">10</strong>
+                    <div class="text-gray-600 text-sm">Years</div>
+                </div>
+                <div class="flex-1 text-center p-3 rounded-md bg-gradient-to-b from-gray-100 to-white">
+                    <strong class="block">50+</strong>
+                    <div class="text-gray-600 text-sm">Clients</div>
+                </div>
+            </div>
+
+            <a class="inline-block mt-3 px-4 py-2 bg-[#2193b0] text-white rounded-md no-underline" href="/contact">Get in touch</a>
+        </div>
+    </div>
+
+    <aside>
+        <div class="bg-white rounded-lg p-6 shadow-md">
+            <h3 class="text-lg font-semibold">Meet the team</h3>
+            <div class="flex gap-3 flex-wrap mt-3">
+                <div class="flex-1 min-w-[150px] text-center p-3">
+                    <img class="w-[88px] h-[88px] rounded-full object-cover mb-2 mx-auto" src="/images/team1.jpg" alt="Alice">
+                    <div><strong>Alice</strong></div>
+                    <div class="text-gray-600 text-sm">Founder</div>
+                </div>
+                <div class="flex-1 min-w-[150px] text-center p-3">
+                    <img class="w-[88px] h-[88px] rounded-full object-cover mb-2 mx-auto" src="/images/team2.jpg" alt="Bob">
+                    <div><strong>Bob</strong></div>
+                    <div class="text-gray-600 text-sm">Lead Dev</div>
+                </div>
+                <div class="flex-1 min-w-[150px] text-center p-3">
+                    <img class="w-[88px] h-[88px] rounded-full object-cover mb-2 mx-auto" src="/images/team3.jpg" alt="Cara">
+                    <div><strong>Cara</strong></div>
+                    <div class="text-gray-600 text-sm">Designer</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</main>
+
+<%- include("partials/footer") %>
