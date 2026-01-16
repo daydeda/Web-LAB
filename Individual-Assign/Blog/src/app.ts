@@ -50,7 +50,7 @@ app.post("/compose", (req, res) => {
     id: Date.now().toString(),
     title: req.body.postTitle,
     body: req.body.postBody,
-    likes: 0,
+    likes: req.body.postLikes || 0,
   };
   console.log(post);
   posts.push(post);
@@ -59,16 +59,15 @@ app.post("/compose", (req, res) => {
 
 app.get("/posts/:postName", (req, res) => {
   const requestedPostName = lodash.lowerCase(req.params.postName);
-  console.log(requestedPostName);
-  
-  posts.forEach((post) => {
-    if (lodash.lowerCase(post.title) === requestedPostName) {
-      res.render("post", {
-        title: post.title,
-        postContent: post.body,
-        id: post.id,
-      });
-    }
+  const post = posts.find((p) => lodash.lowerCase(p.title) === requestedPostName);
+  if (!post) {
+    return res.status(404).send("Post not found");
+  }
+  return res.render("post", {
+    title: post.title,
+    postContent: post.body,
+    id: post.id,
+    likes: post.likes,
   });
 });
 
