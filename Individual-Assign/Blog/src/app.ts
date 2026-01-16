@@ -19,11 +19,13 @@ app.set("view engine", "ejs");
 // Important: make views folder work after compiling to /dist
 app.set("views", path.join(__dirname, "..", "views"));
 
+// Middleware 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 
-// WRITE YOUR CODE HERE
+// --- ROUTES ---
+
 app.get("/", (req, res) => {
   res.render("home", { startingContent: homeStartingContent, posts: posts });
 });
@@ -39,11 +41,6 @@ app.get("/contact", (req, res) => {
 app.get("/compose", (req, res) => {
   res.render("compose");
 });
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public")); // public files
-app.use(express.json()); // JSON for fetch
-// Create an empty array to store posts to store object post which has title and content
 
 app.post("/compose", (req, res) => {
   const post = {
@@ -71,6 +68,19 @@ app.get("/posts/:postName", (req, res) => {
   });
 });
 
+// --- API ENDPOINTS ---
+app.get("/api/posts/:postId", (req, res) => {
+  const { postId } = req.params;
+  const post = posts.find((p) => p.id === postId);
+  
+  if (!post) {
+    return res.status(404).json({ error: "Post not found" });
+  }
+  
+  return res.json({ likes: post.likes });
+});
+
+// endpoint to add a like
 app.post("/api/posts/:postId/like", (req, res) => {
   const { postId } = req.params;
   const post = posts.find((p) => p.id === postId);
