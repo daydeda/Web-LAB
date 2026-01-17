@@ -1,14 +1,129 @@
 <div class="header"><%- include("partials/header") %></div>
-<article class="max-w-3xl mx-auto">
-  <h1 class="text-3xl font-bold mb-4"><%= title %></h1>
-  <div class="prose mb-6 text-gray-800 whitespace-normal break-words break-all"><p><%= postContent %></p></div>
 
-  <div class="flex items-center gap-4" data-post-container>
-    <div class="text-sm text-gray-600">Likes: <span class="font-medium likes-count" data-post-id="<%= id %>"><%= typeof likes !== 'undefined' ? likes : 0 %></span></div>
-    <div>
-      <button type="button" class="like-btn bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600" data-post-id="<%= id %>">Like</button>
+<div class="bg-gradient-to-br min-h-screen py-8 md:py-12">
+  <div class="max-w-4xl mx-auto px-4 md:px-6">
+    <!-- Back Button -->
+    <a href="/" 
+       class="inline-flex items-center gap-2 text-gray-600 hover:text-[#2193b0] mb-6 transition-colors duration-200 group">
+      <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      <span class="font-medium">Back to Home</span>
+    </a>
+
+    <!-- Article Card -->
+    <article class="bg-white rounded-2xl shadow-xl border-2 border-gray-100 overflow-hidden">
+      <!-- Article Header -->
+      <div class="bg-gradient-to-r from-[#6dd5ed] via-[#42b3d5] to-[#2193b0] text-white p-8 md:p-10">
+        <div class="flex items-start gap-3 mb-4">
+          <div class="h-12 w-1.5 bg-white/80 rounded-full flex-shrink-0 mt-1"></div>
+          <div>
+            <h1 class="text-3xl md:text-4xl font-bold leading-tight"><%= title %></h1>
+          </div>
+        </div>
+        
+        <!-- Meta Information -->
+        <div class="flex items-center gap-4 text-sm opacity-90 mt-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+            </svg>
+            <span>Anonymous Author</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+            </svg>
+            <span>Just now</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Content -->
+      <div class="p-8 md:p-10">
+        <div class="prose prose-lg max-w-none mb-8">
+          <div class="text-gray-700 leading-relaxed whitespace-pre-wrap break-words text-lg">
+            <%= postContent %>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t-2 border-gray-100 my-8"></div>
+
+        <!-- Engagement Section -->
+        <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6" data-post-container>
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <!-- Likes Display -->
+            <div class="flex items-center gap-3">
+              <div class="bg-white rounded-full p-3 shadow-md">
+                <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600 font-medium">Total Likes</p>
+                <p class="text-2xl font-bold text-gray-800 likes-count" data-post-id="<%= id %>">
+                  <%= typeof likes !== 'undefined' ? likes : 0 %>
+                </p>
+              </div>
+            </div>
+
+            <!-- Like Button -->
+            <button type="button" 
+                    class="like-btn bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-3 rounded-lg 
+                           font-semibold shadow-lg hover:shadow-xl 
+                           hover:from-red-600 hover:to-pink-600 
+                           transition-all duration-200
+                           focus:outline-none focus:ring-4 focus:ring-red-400
+                           active:scale-95 flex items-center gap-2" 
+                    data-post-id="<%= id %>">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Like this post</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Share Section -->
+        <div class="mt-6 pt-6 border-t border-gray-200">
+          <p class="text-sm font-semibold text-gray-700 mb-3">Share this post</p>
+          <div class="flex gap-3">
+            <button class="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors duration-200">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </button>
+            <button class="bg-sky-500 text-white p-2 rounded-lg hover:bg-sky-600 transition-colors duration-200">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </button>
+            <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition-colors duration-200">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- View All Posts Button -->
+    <div class="mt-8 flex justify-center">
+      <a href="/" 
+         class="inline-flex items-center gap-2 bg-gradient-to-r from-[#2193b0] to-[#6dd5ed] text-white font-semibold 
+                px-6 py-3 rounded-lg shadow-lg hover:shadow-xl 
+                hover:scale-105 active:scale-95 
+                transition-all duration-200">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+        </svg>
+        View All Posts
+      </a>
     </div>
   </div>
-</article>
+</div>
+
 <script src="/like.js" defer></script>
 <%- include("partials/footer") %>
