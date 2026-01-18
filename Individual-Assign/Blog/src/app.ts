@@ -57,6 +57,7 @@ app.post("/compose", (req, res) => {
 app.get("/posts/:postName", (req, res) => {
   const requestedPostName = lodash.lowerCase(req.params.postName);
   const post = posts.find((p) => lodash.lowerCase(p.title) === requestedPostName);
+  console.log(req.params.postName);
   if (!post) {
     return res.status(404).send("Post not found");
   }

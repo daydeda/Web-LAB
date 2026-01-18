@@ -54,8 +54,8 @@
               <p class="text-gray-600 mb-4 leading-relaxed line-clamp-4">
                 <% 
                   var excerpt = (post.body || '');
-                  if (excerpt.length > 150) { 
-                    excerpt = excerpt.substring(0, 150) + '...'; 
+                  if (excerpt.length > 300) { 
+                    excerpt = excerpt.substring(0, 300) + '...'; 
                   }
                 %>
                 <%= excerpt %>
@@ -74,7 +74,7 @@
                   </span>
                 </div>
                 <span class="text-xs text-gray-400 font-medium">
-                  <!-- Optional: Add post date here -->
+                  <%= new Date(post.createdAt).toLocaleDateString() %>
                 </span>
               </div>
               

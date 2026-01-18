@@ -12,7 +12,7 @@
 
   // --- FORCE REFRESH FUNCTION ---
   const refreshLikeCounts = () => {
-    console.log("Triggering like count refresh..."); // Debug log
+    console.log("Triggering like count refresh...");
 
     const likeCounters = document.querySelectorAll(".likes-count");
 
@@ -21,18 +21,16 @@
       if (!id) return;
 
       try {
-        // TRICK: Add "?t=" + Date.now()
-        // This makes the URL unique every single time, so the browser CANNOT cache it.
         const url = `/api/posts/${id}?t=${Date.now()}`;
         
         const res = await fetch(url, {
-            headers: { 'Cache-Control': 'no-cache' } // Extra safety
+            headers: { 'Cache-Control': 'no-cache' }
         });
         
         if (res.ok) {
           const json = await res.json();
           if (typeof json.likes !== "undefined") {
-            console.log(`Updated post ${id} to ${json.likes}`); // Debug log
+            console.log(`Updated post ${id} to ${json.likes}`);
             counter.textContent = String(json.likes);
           }
         }
@@ -87,7 +85,6 @@
   }
 
   // --- EVENT LISTENER ---
-  // We use specific logic to ensure this runs when coming back from history
   window.addEventListener("pageshow", (event) => {
     // Log to console to verify the event is firing
     console.log("Page showed. Persisted (Back button used):", event.persisted);
