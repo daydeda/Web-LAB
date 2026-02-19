@@ -28,15 +28,12 @@ export const searchBooks = (req: Request, res: Response) => {
 export const addBook = (req: Request, res: Response) => {
   const { title, author, price } = req.body;
   
-  // Basic validation (optional but good practice)
   if (!title || !author || !price) {
-     // In a real app we'd show an error. Here we just redirect or ignore.
-     // Let's assume valid input for now or just redirect back.
      return res.redirect('/books');
   }
 
   const newBook: Book = {
-      id: 0, // ID will be handled by service
+      id: 0,
       title,
       author,
       price: parseFloat(price)
