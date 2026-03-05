@@ -1,8 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<%- include('partials/head') %>
 <body>
-<h1>Home</h1>
-<p><a href="/login">Login</a></p>
-<p><a href="/profile">Profile (protected)</a></p>
+  <%- include('partials/nav') %>
+  <main class="container">
+    <div class="card text-center">
+      <h1 class="title">Welcome to the App</h1>
+      <p class="mb-6">This is the home page. Please login or register to continue.</p>
+      <% if (!user) { %>
+        <div>
+          <a href="/login" class="btn btn-primary">Go to Login</a>
+        </div>
+      <% } else { %>
+        <div>
+          <a href="/profile" class="btn btn-primary">View Profile</a>
+        </div>
+      <% } %>
+    </div>
+  </main>
 </body>
 </html>

@@ -2,6 +2,16 @@ import { Router, Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { User } from "../models/User";
+import rateLimit from "express-rate-limit";
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 5 requests per window
+  handler: (req, res) => {
+    res.status(429).redirect("/login?err=rate_limit");
+  },
+});
+
 const router = Router();
 // Register (for lab/testing)
 router.post("/register", async (req: Request, res: Response) => {
@@ -10,7 +20,7 @@ router.post("/register", async (req: Request, res: Response) => {
   const user = await User.create({ email, passwordHash });
   res.send({ message: "registered", userId: user._id.toString() });
 });
-router.post("/login", async (req: Request, res: Response) => {
+router.post("/login", loginLimiter, async (req: Request, res: Response) => {
   const { email, password } = req.body as { email: string; password: string };
   const user = await User.findOne({ email });
   if (!user) return res.redirect("/login?err=invalid");
@@ -31,6 +41,6 @@ router.post("/login", async (req: Request, res: Response) => {
 });
 router.post("/logout", (req: Request, res: Response) => {
   res.clearCookie("token");
-  res.redirect("/");
+  res.redirect("/login?msg=logged_out");
 });
 export default router;
